@@ -1,2 +1,18 @@
-<h1>Persons#profile</h1>
-<p>Find me in app/views/persons/profile.html.erb</p>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<div>
+	<h2>Profile:</h2>
+	<p>
+		<b>Username: </b> <%= current_user.username %>
+	</p>
+	<p>
+		<b>E-mail: </b> <%= current_user.email %>
+	</p>
+	<%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_user_registration_path, :class => 'btn btn-default btn-xs' %>
+
+	<h3>Your books:</h3>
+	<%= paginate @books %>
+	<%= render 'books/books' %>
+</div> 
