@@ -3,6 +3,8 @@
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
 
+<%= paginate @books %>
+
 <%= render 'books' %>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
