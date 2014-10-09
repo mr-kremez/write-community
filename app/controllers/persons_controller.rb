@@ -1,4 +1,6 @@
 class PersonsController < ApplicationController
-  def profile
-  end
+	before_action :authenticate_member!
+	
+  	def profile
+  	end
 end
