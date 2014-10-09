@@ -15,7 +15,7 @@ Category.create(:name => "Nature")
 Category.create(:name => "IT")
 Category.create(:name => "Society")
 
-25.times do |i|
+50.times do |i|
 	Book.create(:name => "Book #{i}", :description => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel tincidunt metus, eu lobortis odio. Duis ipsum lorem, fringilla vitae euismod vitae, eleifend ultricies velit. Nam maximus nunc eu pharetra facilisis. In fringilla felis volutpat ex lacinia dignissim. Quisque nec metus eu justo mattis molestie. Suspendisse egestas nunc nec ipsum aliquet laoreet. Quisque dignissim dui quis lectus fermentum, non varius justo cursus. Nam vel lorem sed lectus interdum auctor. Mauris porttitor neque purus, in lacinia enim ultricies eget. Curabitur in lacus est. Vestibulum eu fringilla nulla.", 
 		:category_id => rand(1..4), :user_id  => rand(1..2))
 end

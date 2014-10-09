@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'chapters/show'
+
   get 'persons/profile'
 
   resources :books do

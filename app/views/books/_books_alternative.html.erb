@@ -1,0 +1,9 @@
+<div class="list-group">
+  <% @books.each do |book| %>
+    <%= link_to(book_path(book), :class => 'list-group-item') do %>
+      <h4 class="list-group-item-heading"><%= book.name %></h4>
+      <h5 class="list-group-item-heading"><%= book.user.username %></h5>
+      <p class="list-group-item-text"><%= book.description %></p>
+    <% end %>
+  <% end %>
+</div>  

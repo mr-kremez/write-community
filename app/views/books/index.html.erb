@@ -5,8 +5,5 @@
 
 <%= paginate @books %>
 
-<%= render 'books' %>
+<%= render 'books_alternative' %>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_book_path,
-            :class => 'btn btn-primary' %>
