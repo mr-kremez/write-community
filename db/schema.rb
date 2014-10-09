@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141009132141) do
+ActiveRecord::Schema.define(version: 20141009154452) do
 
   create_table "books", force: true do |t|
     t.string   "name"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 20141009132141) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "chapters", force: true do |t|
+    t.string   "name"
+    t.text     "content"
+    t.integer  "book_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "chapters", ["book_id"], name: "index_chapters_on_book_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
