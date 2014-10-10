@@ -1,4 +1,14 @@
-<h1><%= @chapter.name %></h1>
-<div>
-	<%= @chapter.content %>
+<div class="page-header">
+  	<h1><%= @book.name %></h1>
+</div>
+
+<div class='row'>
+	<div class="col-md-3">
+		<div class="well well-sm">
+			<%= render 'list_of_chapters' %>
+		</div>
+	</div>
+	<div class="col-md-8">
+		<%= render 'display_chapter' %>
+	</div>
 </div>

@@ -5,6 +5,7 @@ class ChaptersController < ApplicationController
 
   def index
     @chapters = @book.chapters
+    @chapter = @chapters.first
     respond_with(@chapter)
   end
 
@@ -22,6 +23,6 @@ class ChaptersController < ApplicationController
     end
 
     def chapter_params
-      params.require(:chapter).permit(:name)
+      params.require(:chapter).permit(:name, :content)
     end
 end

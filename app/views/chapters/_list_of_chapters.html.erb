@@ -1,0 +1,5 @@
+<div class="list-group">  
+    <% @book.chapters.each do |chapter| %>      
+        <%= link_to "#{chapter.name}", book_chapter_path(@book, chapter), :class => "list-group-item" %>        
+    <% end %>
+</div>

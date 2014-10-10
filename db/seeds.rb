@@ -21,6 +21,16 @@ Category.create(:name => "Society")
 end
 
 10.times do |i|
-	Chapter.create(:name => "Chapter #{i}", :content => "Duis sollicitudin neque lorem, id vestibulum arcu tincidunt non. Duis sagittis velit diam, in scelerisque lectus accumsan sed. Vivamus libero diam, facilisis ut efficitur nec, semper non odio. Integer ultricies turpis est, non porta enim aliquet vel. Pellentesque imperdiet ex at commodo efficitur. Nullam convallis sem ultrices dapibus scelerisque. Quisque eros sem, eleifend sed imperdiet ut, fringilla eu nisl. Ut dictum mattis ante. Nulla ut ipsum tellus. Aenean at enim sem. Sed pulvinar enim consectetur ligula commodo, non venenatis sapien rutrum. Morbi et luctus lorem.",
+	Chapter.create(:name => "Chapter #{i}", :content => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et sollicitudin ante. Duis faucibus diam sollicitudin, porta mi vitae, viverra nibh. Mauris sed porttitor felis, a malesuada arcu. Ut vitae lectus vel mi tincidunt tincidunt. Cras id diam egestas orci hendrerit sagittis. Fusce ultrices consequat quam, at malesuada leo viverra vel. Ut pharetra id lectus nec consequat. Morbi sed eleifend dui. Etiam faucibus molestie turpis, nec facilisis leo maximus eu. Donec maximus ac risus ut dictum. Suspendisse sed dapibus felis, non laoreet nunc.
+
+Integer ac feugiat urna. Praesent vitae sapien lacus. Praesent dapibus lorem velit, at rutrum augue sodales at. Suspendisse suscipit libero ut urna maximus, sit amet aliquam nisl vulputate. Cras quis placerat neque. Vestibulum pellentesque rhoncus purus, vitae pellentesque lectus. Nulla facilisi. Pellentesque ac elit neque. Donec nisl magna, consectetur sollicitudin quam ac, dapibus egestas odio. Nunc semper felis nec diam consectetur mattis.
+
+Aliquam feugiat euismod leo, et hendrerit urna scelerisque non. Praesent pretium porta mauris quis dapibus. Fusce nec augue nisi. Nulla ullamcorper ultrices auctor. Mauris non arcu eleifend, cursus dui vitae, aliquet odio. Ut tempus non eros eu eleifend. Donec ac dolor vestibulum, rutrum ex et, malesuada quam. Donec luctus dictum est, et consequat dolor feugiat sed. Donec pretium sed velit sed aliquet.
+
+Praesent tempor ligula in eros cursus, vel porttitor magna fringilla. Nunc tellus nulla, rhoncus vitae eros non, fringilla sagittis diam. Sed eu odio a arcu pulvinar consectetur eget ut sem. Nullam in mi imperdiet, blandit enim ut, egestas libero. Quisque ultrices mauris nec tellus tempus, a posuere odio tempus. Nunc semper vitae orci in venenatis. Ut dignissim nibh non justo feugiat, nec dictum turpis rhoncus. Suspendisse potenti. Donec vitae est at elit suscipit mollis. Cras sed pharetra nisl, ut finibus justo. Donec vulputate augue eu ipsum tristique congue. Aliquam fringilla ultrices nulla, id blandit mi eleifend eget.
+
+Phasellus laoreet lacus sed lacus venenatis, vehicula tincidunt est porttitor. Vestibulum dignissim ante et mauris tincidunt, sed pharetra libero imperdiet. Integer euismod semper dui. Nam sollicitudin lectus dolor, at tincidunt diam ullamcorper sit amet. Maecenas justo massa, dictum sed tellus vitae, tempus accumsan massa. Mauris egestas ac mauris in ultricies. In rhoncus ante sit amet mattis interdum. Mauris fermentum, odio id maximus dictum, leo tortor sagittis dui, quis lacinia elit ex nec mauris. Proin fermentum egestas leo a elementum.
+
+",
 		:book_id => 1)
 end
