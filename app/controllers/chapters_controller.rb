@@ -1,6 +1,6 @@
 class ChaptersController < ApplicationController
   respond_to :html, :xml, :json
-  before_action :set_chapter, only: :show
+  before_action :set_chapter, only: [:show, :edit, :update]
   before_action :set_book
 
   def index
@@ -10,6 +10,22 @@ class ChaptersController < ApplicationController
   end
 
   def show
+    respond_with(@chapter)
+  end
+
+  def update
+    respond_to do |format|
+      if @chapter.update_attributes(chapter_params)
+        format.html { redirect_to @book, notice: 'Chapter was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def edit
     respond_with(@chapter)
   end
 

@@ -43,3 +43,7 @@ gem 'devise'
 gem "twitter-bootstrap-rails"
 
 gem 'kaminari'
+
+gem "redcarpet"
+
+gem 'markitup-rails'
