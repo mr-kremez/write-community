@@ -21,7 +21,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(book_params)
+    @book = current_user.books.new(book_params)
     @book.save
     respond_with(@book)
   end
@@ -42,6 +42,6 @@ class BooksController < ApplicationController
     end
 
     def book_params
-      params.require(:book).permit(:name, :description)
+      params.require(:book).permit(:name, :description, :category_id)
     end
 end

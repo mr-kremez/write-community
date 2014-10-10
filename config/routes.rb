@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'home/contact'
+
   post 'markdown/preview'
 
   get 'chapters/show'

@@ -6,9 +6,10 @@
 	<p>
 		<b>E-mail: </b> <%= current_user.email %>
 	</p>
-	<%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_user_registration_path, :class => 'btn btn-default btn-xs' %>
-
+	<div class="btn-group">
+    	<%= link_to 'Edit profile information', edit_user_registration_path, :class => 'btn btn-default btn-xs' %>                 
+    	<%= link_to 'Create new book', new_book_path, :class => 'btn btn-info btn-xs' %>
+    </div>
 	<h3>Your books:</h3>
 	<%= paginate @books %>
 	<%= render 'books/books' %>

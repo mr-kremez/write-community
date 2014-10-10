@@ -25,23 +25,16 @@
   <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :description, :class => 'form-control' %>
+      <%= f.text_area :description, :class => 'form-control' %>
     </div>
     <%= error_span(@book[:description]) %>
   </div>
   <div class="control-group">
-    <%= f.label :user_id, :class => 'control-label' %>
+    <%= f.label :category, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :user_id, :class => 'form-control' %>
+      <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name), :class => 'form-control' %>
     </div>
-    <%= error_span(@book[:user_id]) %>
-  </div>
-  <div class="control-group">
-    <%= f.label :category_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :category_id, :class => 'form-control' %>
-    </div>
-    <%= error_span(@book[:category_id]) %>
+    <%= error_span(@book[:description]) %>
   </div>
 
 

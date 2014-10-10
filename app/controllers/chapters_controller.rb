@@ -13,6 +13,16 @@ class ChaptersController < ApplicationController
     respond_with(@chapter)
   end
 
+  def new
+    @chapter = Chapter.new
+    respond_with(@chapter)
+  end
+
+  def create
+    @chapter = @book.chapters.create(chapter_params)
+    redirect_to book_path(@book)
+  end
+
   def update
     respond_to do |format|
       if @chapter.update_attributes(chapter_params)
