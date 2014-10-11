@@ -5,5 +5,15 @@
 
 <%= paginate @books %>
 
-<%= render 'books_for_index' %>
+<div class="row">
+	<div class='col-md-9'>
+		<%= render 'books_for_index' %>
+	</div>
+	<div class='col-md-3'>
+		<div class='well well-sm'>
+			<h4>Categories</h4>
+			<%= render 'categories' %>
+		</div>
+	</div>
+</div>
 

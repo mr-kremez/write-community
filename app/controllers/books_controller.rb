@@ -3,8 +3,11 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   def index
-    #@books = Book.all
-    @books = Book.page(params[:page]).per(params[:per])
+    if params[:category_id]
+      @books = Book.where(category_id: params[:category_id]).page(params[:page]).per(params[:per])
+    else
+      @books = Book.page(params[:page]).per(params[:per])
+    end
     respond_with(@books)
   end
 
