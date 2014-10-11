@@ -4,6 +4,7 @@ class BooksController < ApplicationController
 
   def index
     if params[:category_id]
+      @category_id = params[:category_id].to_i
       @books = Book.where(category_id: params[:category_id]).page(params[:page]).per(params[:per])
     else
       @books = Book.page(params[:page]).per(params[:per])
