@@ -6,9 +6,19 @@
 	<div class="col-md-3">
 		<div class="well well-sm">
 			<%= render 'list_of_chapters' %>
+			<% if current_user == @book.user %>
+				<div class="btn-group">
+					<%= link_to 'Add chapter', new_book_chapter_path, :class => 'btn btn-default btn-sm' %>
+					<%= link_to 'Edit chapter', edit_book_chapter_path(@book, @chapter), :class => 'btn btn-default btn-sm' %>
+				</div>
+			<% end %>
 		</div>
 	</div>
 	<div class="col-md-8">
 		<%= render 'display_chapter' %>
+		<ul class="pager">
+  			<li class="previous <%= 'disabled' if @chapter_id == @first_chapter_id_of_the_book %>"><%= link_to "Previous chapter", book_chapter_path(@book, @prev_chapter) %></li>
+  			<li class="next <%= 'disabled' if @chapter_id == @last_chapter_id_of_the_book %>"><%= link_to "Next chapter", book_chapter_path(@book, @next_chapter) %></li>
+		</ul>
 	</div>
 </div>
