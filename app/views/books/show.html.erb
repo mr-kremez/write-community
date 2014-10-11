@@ -9,6 +9,8 @@
   <dd><%= @book.category.name %></dd>
   <dt><strong>Description:</strong></dt>
   <dd><%= @book.description %></dd>
+  <dt><strong>Tags:</strong></dt>
+  <dd><%= raw @book.tag_list.map { |t| link_to t, books_path(:tag => t) }.join(', ') %></dd>
   <dt><strong>Chapters:</strong></dt>
   <dd><%= render 'chapters/list_of_chapters' %></dd>
 </dl>

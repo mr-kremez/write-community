@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get 'persons/profile'
 
+  get 'tags/:tag', to: 'books#show', as: :tag
+
   resources :books do
     resources :chapters
   end

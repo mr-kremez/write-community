@@ -47,3 +47,5 @@ gem 'kaminari'
 gem "redcarpet"
 
 gem 'markitup-rails'
+
+gem 'acts-as-taggable-on'

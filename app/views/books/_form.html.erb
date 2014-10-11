@@ -36,6 +36,10 @@
     </div>
     <%= error_span(@book[:description]) %>
   </div>
+  <div class="field">
+    <%= f.label :tag_list, "Tags (separated by commas)" %><br />
+    <%= f.text_field :tag_list %>
+  </div>
 
 
   <%= f.submit nil, :class => 'btn btn-primary' %>

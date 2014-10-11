@@ -6,6 +6,8 @@ class BooksController < ApplicationController
     if params[:category_id]
       @category_id = params[:category_id].to_i
       @books = Book.where(category_id: params[:category_id]).page(params[:page]).per(params[:per])
+    elsif params[:tag]
+      @books = Book.tagged_with(params[:tag]).page(params[:page]).per(params[:per])
     else
       @books = Book.page(params[:page]).per(params[:per])
     end
@@ -13,6 +15,7 @@ class BooksController < ApplicationController
   end
 
   def show
+
     respond_with(@book)
   end
 
@@ -46,6 +49,6 @@ class BooksController < ApplicationController
     end
 
     def book_params
-      params.require(:book).permit(:name, :description, :category_id)
+      params.require(:book).permit(:name, :description, :category_id, :tag_list)
     end
 end
