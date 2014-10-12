@@ -1,0 +1,15 @@
+<div class="list-group">
+  <% @anotations.each do |anotation| %>
+    <%= link_to(book_chapter_path(anotation.chapter.book, anotation.chapter), :class => 'list-group-item') do %>
+    	<div class='row'>
+    		<div class='col-md-10'>
+				<p class="list-group-item-text"><%= anotation.body %></p>
+			</div>
+			<div class='col-md-2'>
+				<p class="list-group-item-text"><b>Book: </b><%= anotation.chapter.book.name %></p>
+				<p class="list-group-item-text"><b>Chapter: </b><%= anotation.chapter.name %></p>
+			</div>
+		</div>
+    <% end %>
+  <% end %>
+</div>  

@@ -20,6 +20,8 @@
 			<% end %>
 			<h3>Add anotation</h3>
 			<%= render 'anotations/new_anotation' %>
+		<% else %>
+			<%= link_to 'Log in for be able leave anotations', new_user_registration_path, :class => 'btn btn-link' %>
 		<% end %>		
 	</div>
 </div>
