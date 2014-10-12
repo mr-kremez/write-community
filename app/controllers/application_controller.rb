@@ -7,8 +7,12 @@ class ApplicationController < ActionController::Base
 
   layout :layout_type
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to main_app.root_url, :alert => exception.message
+  end
+
   def layout_type
-  	'black' if current_user.layout == 2
+  	'black' if current_user.try(:layout) == 2
   end
 
   protected

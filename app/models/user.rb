@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  rolify
   has_many :books
   has_many :anotations, dependent: :destroy
   # Include default devise modules. Others available are:
