@@ -15,7 +15,7 @@ class BooksController < ApplicationController
   end
 
   def show
-
+    @chapter = Book.find(params[:id]).chapters.first
     respond_with(@book)
   end
 

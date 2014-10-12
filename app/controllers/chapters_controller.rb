@@ -8,6 +8,8 @@ class ChaptersController < ApplicationController
   end
 
   def show
+    @anotations = @chapter.anotations.where(:user_id => current_user)
+    
     @chapter_id = params[:id].to_i
     @first_chapter_id_of_the_book = @book.chapters.select(:id).first[:id].to_i
     @last_chapter_id_of_the_book = @book.chapters.select(:id).last[:id].to_i

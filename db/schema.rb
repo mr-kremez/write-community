@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141011194246) do
+ActiveRecord::Schema.define(version: 20141012082400) do
+
+  create_table "anotations", force: true do |t|
+    t.text     "body"
+    t.integer  "chapter_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "anotations", ["chapter_id"], name: "index_anotations_on_chapter_id"
+  add_index "anotations", ["user_id"], name: "index_anotations_on_user_id"
 
   create_table "books", force: true do |t|
     t.string   "name"

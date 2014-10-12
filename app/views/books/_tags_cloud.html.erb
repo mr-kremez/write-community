@@ -1,0 +1,8 @@
+<div class='well well-sm'>
+	<h4>Tags</h4>
+	<div id="tag_cloud">
+  		<% tag_cloud Book.tag_counts, %w{s m l} do |tag, css_class| %>
+    		<%= link_to tag.name, books_path(:tag => tag.name), class: css_class %>
+  		<% end %>
+	</div>
+</div>

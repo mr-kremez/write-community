@@ -10,8 +10,11 @@ Rails.application.routes.draw do
   get 'tags/:tag', to: 'books#show', as: :tag
 
   resources :books do
-    resources :chapters
+    resources :chapters do
+      resources :anotations
+    end
   end
+
 
   devise_for :users
   get 'persons/profile', as: 'user_root' 

@@ -1,0 +1,12 @@
+<%= form_for([@book, @chapter, @chapter.anotations.build]) do |f| %>
+	<p>
+		<%= f.hidden_field :user_id, :value => current_user.id %>
+	</p>
+
+	<p>
+		<%= f.text_area :body %>
+	</p>
+	<p>
+		<%= f.submit :class=> 'btn btn-default btn-sm' %>
+	</p>
+<% end %>
