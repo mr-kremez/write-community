@@ -25,7 +25,7 @@
   <div class="control-group">
     <%= f.label :content, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_area :content, :class => 'form-control' %>
+      <%= f.text_area :content, :class => 'form-control', rows: 8 %>
     </div>
     <%= error_span(@book[:content]) %>
   </div>

@@ -10,8 +10,10 @@
 		    	<p class="list-group-item-heading">Category: <em><%= book.category.name %></em></p>
 		    </div>
 		</div>
-		<p class="list-group-item-text"><%= book.description %></p><br />
-		<p class="list-group-item-text"><b>Tags:</b> <%= raw book.tag_list.map { |t| t }.join(', ') %></p> 	
+		<p class="list-group-item-text"><%= truncate(strip_tags(book.description), length: 340) %></p><br />
+		<% if book.tag_list.any? %>
+			<p class="list-group-item-text"><b>Tags:</b> <%= raw book.tag_list.map { |t| t }.join(', ') %></p> 	
+		<% end %>
     <% end %>
   <% end %>
 </div>  
