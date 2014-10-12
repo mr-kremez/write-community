@@ -11,6 +11,7 @@ class BooksController < ApplicationController
     else
       @books = Book.page(params[:page]).per(params[:per])
     end
+    @tags = Book.tag_counts.map {|tag| {text: tag.name, weight: tag.taggings_count, link:  Rails.application.routes.url_helpers.books_path(:tag => tag.name)} }.to_json
     respond_with(@books)
   end
 

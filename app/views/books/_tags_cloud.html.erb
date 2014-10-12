@@ -1,8 +1,17 @@
 <div class='well well-sm'>
 	<h4>Tags</h4>
-	<div id="tag_cloud">
-  		<% tag_cloud Book.tag_counts, %w{s m l} do |tag, css_class| %>
-    		<%= link_to tag.name, books_path(:tag => tag.name), class: css_class %>
-  		<% end %>
+	<div id="myCanvasContainer">
+	  <canvas width="200" height="200" id="myCanvas">
+	    <p>Your browser not support tags 3d cloud!</p>
+	  </canvas>
+	</div>
+	<div id="tags">
+	  <ul>
+	    <% tag_cloud Book.tag_counts, %w{s m l} do |tag, css_class| %>
+			<li><%= link_to tag.name, books_path(:tag => tag.name), style: 'style="font-size: #{tag.taggings_count}pt"' %></li>
+		<% end %>
+	  </ul>
 	</div>
 </div>
+
+

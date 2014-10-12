@@ -5,6 +5,8 @@
 <dl class="dl-horizontal">  
   <dt><strong> Author:</strong></dt>
   <dd><%= @book.user.username %></dd>
+  <dt><strong> Interesting:</strong></dt>
+  <dd><%= rating_for @book, "interesting", :disable_after_rate => true %></dd>
   <dt><strong>Category:</strong></dt>
   <dd><%= @book.category.name %></dd>
   <dt><strong>Description:</strong></dt>

@@ -2,12 +2,13 @@
   <% @books.each do |book| %>
     <%= link_to(book_path(book), :class => 'list-group-item') do %>
     	<div class='row'>
-    		<div class='col-md-10'>
+    		<div class='col-md-9'>
 		    	<h4 class="list-group-item-heading"><%= book.name %></h4>
 		    	<h5 class="list-group-item-heading"><%= book.user.username %></h5>
+		    	Interesting : <%= rating_for book, "interesting" %>
 		    </div>
-		    <div class='col-md-2'>		    	
-		    	<p class="list-group-item-heading">Category: <em><%= book.category.name %></em></p>
+		    <div class='col-md-3'>		    	
+		    	<p class="list-group-item-heading"><b>Category: </b><%= book.category.name %></p>
 		    </div>
 		</div>
 		<p class="list-group-item-text"><%= truncate(strip_tags(book.description), length: 340) %></p><br />

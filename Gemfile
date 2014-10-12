@@ -49,3 +49,7 @@ gem "redcarpet"
 gem 'markitup-rails'
 
 gem 'acts-as-taggable-on'
+
+gem 'jqcloud-rails'
+
+gem 'ratyrate'

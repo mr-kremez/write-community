@@ -1,4 +1,6 @@
 class Book < ActiveRecord::Base
+	ratyrate_rateable "interesting"
+	
 	belongs_to :user
 	belongs_to :category
 	has_many :chapters, dependent: :destroy
