@@ -10,8 +10,10 @@
 		</div>
 	</div>
 	<div class="col-md-8">
-		<%= render 'display_chapter' %>
-		<%= render 'pager_for_chapters' %>
+		<div class='well well-sm'>
+			<%= render 'display_chapter' %>
+			<%= render 'pager_for_chapters' %>
+		</div>
 		
 		<% if current_user %>
 			<% if @anotations.any? %>

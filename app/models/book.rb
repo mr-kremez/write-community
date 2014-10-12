@@ -1,5 +1,5 @@
 class Book < ActiveRecord::Base
-	ratyrate_rateable "interesting"
+	ratyrate_rateable "rating"
 	
 	belongs_to :user
 	belongs_to :category

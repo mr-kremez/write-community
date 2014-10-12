@@ -9,4 +9,16 @@ class User < ActiveRecord::Base
   ratyrate_rater
 
   LAYOUTS = [['White', 1], ['Black', 2]]
+
+  def active_for_authentication? 
+    super && !blocked?
+  end 
+
+  def inactive_message 
+    if blocked? 
+      :not_approved 
+    else 
+      super # Use whatever other message 
+    end 
+  end
 end
