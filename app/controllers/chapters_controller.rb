@@ -1,7 +1,8 @@
 class ChaptersController < ApplicationController
   respond_to :html, :xml, :json
-  before_action :set_chapter, only: [:show, :edit, :update]
+  before_action :set_chapter, only: [:show, :edit, :update, :destroy]
   before_action :set_book
+  before_action :check_chapter_belongs_to_user, only: [:edit, :create, :destroy, :update]
 
   def index
     respond_with(@chapter)
@@ -43,6 +44,11 @@ class ChaptersController < ApplicationController
     respond_with(@chapter)
   end
 
+  def destroy
+    @chapter.destroy
+    redirect_to book_path(@book), notice: "Chapter successfully deleted!"
+  end
+
   private
     def set_chapter
       @chapter = Chapter.find(params[:id])
@@ -67,5 +73,9 @@ class ChaptersController < ApplicationController
       else
         prev_chapter = @chapter_id
       end
+    end
+
+    def check_chapter_belongs_to_user
+      redirect_to book_chapter_path(@book, @chapter), alert: "You can not edit someone else's book " if @book.user_id != current_user.id
     end
 end

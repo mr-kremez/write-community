@@ -2,6 +2,7 @@ class BooksController < ApplicationController
   respond_to :html, :xml, :json
   before_action :set_book, only: [:show, :edit, :update, :destroy]
   before_action :set_tags, only: [:index]
+  before_action :check_book_belongs_to_user, only: [:edit, :create, :destroy, :update]
 
   def index
     if params[:category_id]
@@ -27,7 +28,7 @@ class BooksController < ApplicationController
     respond_with(@book)
   end
 
-  def edit
+  def edit       
   end
 
   def create
@@ -38,12 +39,12 @@ class BooksController < ApplicationController
 
   def update
     @book.update(book_params)
-    respond_with(@book)
+    respond_with(@book)    
   end
 
   def destroy
     @book.destroy
-    respond_with(@book)
+    redirect_to user_root_path, notice: "Book successfully deleted!"
   end
 
   private
@@ -57,5 +58,9 @@ class BooksController < ApplicationController
 
     def set_tags
       @tags = Book.tag_counts.map {|tag| {text: tag.name, weight: tag.taggings_count, link:  Rails.application.routes.url_helpers.books_path(:tag => tag.name)} }.to_json
+    end
+
+    def check_book_belongs_to_user
+      redirect_to book_path(@book), alert: "You can not edit someone else's book " if @book.user_id != current_user.id
     end
 end

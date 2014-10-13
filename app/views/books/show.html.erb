@@ -5,7 +5,12 @@
 <dl class="dl-horizontal">
   <% if current_user == @book.user %> 
     <dt><strong> Edit book information:</strong></dt>
-    <dd><%= link_to 'Edit', edit_book_path(@book), :class => 'btn btn-default btn-xs' %></dd>
+    <dd>
+      <div class="btn-group">
+        <%= link_to 'Edit', edit_book_path(@book), :class => 'btn btn-default btn-xs' %>
+        <%= link_to 'Delete this book', book_path(@book), method: :delete, :class => 'btn btn-danger btn-xs', data: {confirm: 'Are you sure?'} %>
+      </div>
+    </dd>
   <% end %>
   <dt><strong> Author:</strong></dt>
   <dd><%= @book.user.username %></dd>
@@ -29,10 +34,15 @@
       <dd><%= link_to 'Add chapter', new_book_chapter_path(@book), :class => 'btn btn-default btn-xs' %><dd>
     <% else %>
       <dt class='margin_bottom'><strong>Add chapter:</strong></dt>
-      <dd><%= link_to 'Add chapter', new_book_chapter_path(@book), :class => 'btn btn-default btn-xs' %><dd>
-      <dt><strong>Chapters:</strong></dt>
-      <dd><%= render 'chapters/list_of_chapters' %></dd>
-    <% end %>
+      <dd><%= link_to 'Add chapter', new_book_chapter_path(@book), :class => 'btn btn-default btn-xs' %><dd>      
+    <% end %>    
+  <% end %>
+  <% if @book.chapters.any? %>
+    <dt><strong>Chapters:</strong></dt>
+    <dd><%= render 'chapters/list_of_chapters' %></dd>
+  <% else %>
+    <dt><strong>Chapters:</strong></dt>
+    <dd>This book hasn't any chapters.</dd>
   <% end %>
 </dl>
 
