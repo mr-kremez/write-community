@@ -1,5 +1,6 @@
 class ChaptersController < ApplicationController
   respond_to :html, :xml, :json
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_chapter, only: [:show, :edit, :update, :destroy]
   before_action :set_book
   before_action :check_chapter_belongs_to_user, only: [:edit, :create, :destroy, :update]
@@ -11,10 +12,15 @@ class ChaptersController < ApplicationController
   def show
     @anotations = @chapter.anotations.where(:user_id => current_user)
     
+    @chapters = @book.chapters
+
     @chapter_id = params[:id].to_i
     @first_chapter_id_of_the_book = @book.chapters.pluck(:id).first
     @last_chapter_id_of_the_book  = @book.chapters.pluck(:id).last
-    @prev_chapter ,@next_chapter  = @chapter.set_prev_next_chapters(@first_chapter_id_of_the_book, @last_chapter_id_of_the_book)
+
+    chapter_index = @chapters.index(@chapter)
+    (chapter_index < @chapters.length - 1) ? @next_chapter = @chapters.at(chapter_index + 1) : @next_chapter = @chapter
+    (chapter_index > 0) ? @prev_chapter = @chapters.at(chapter_index - 1) : @prev_chapter = @chapter
     respond_with(@chapter)
   end
 

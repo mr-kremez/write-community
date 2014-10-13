@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   respond_to :html, :xml, :json
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_book, only: [:show, :edit, :update, :destroy]
   before_action :set_tags, only: [:index]
   before_action :check_book_belongs_to_user, only: [:edit, :create, :destroy, :update]
