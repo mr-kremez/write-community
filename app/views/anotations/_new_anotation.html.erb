@@ -1,4 +1,4 @@
-<%= form_for([@book, @chapter, @chapter.anotations.build]) do |f| %>
+<%= form_for([@book, @chapter, @chapter.anotations.build], remote: true) do |f| %>
 	<p>
 		<%= f.hidden_field :user_id, :value => current_user.id %>
 	</p>

@@ -19,6 +19,9 @@ Category.create(:name => "Society")
 	Book.create(:name => "Book #{i + 1}", :description => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel tincidunt metus, eu lobortis odio. Duis ipsum lorem, fringilla vitae euismod vitae, eleifend ultricies velit. Nam maximus nunc eu pharetra facilisis. In fringilla felis volutpat ex lacinia dignissim. Quisque nec metus eu justo mattis molestie. Suspendisse egestas nunc nec ipsum aliquet laoreet. Quisque dignissim dui quis lectus fermentum, non varius justo cursus. Nam vel lorem sed lectus interdum auctor. Mauris porttitor neque purus, in lacinia enim ultricies eget. Curabitur in lacus est. Vestibulum eu fringilla nulla.", 
 		:category_id => rand(1..4), :user_id  => rand(1..2))
 end
+15.times do |i|
+  Book.find(rand(4)*i+1).tags.create(name: "Tag#{i}", taggings_count: rand(15))
+end
 
 10.times do |i|
 	Chapter.create(:name => "Chapter #{i + 1}", :content => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et sollicitudin ante. Duis faucibus diam sollicitudin, porta mi vitae, viverra nibh. Mauris sed porttitor felis, a malesuada arcu. Ut vitae lectus vel mi tincidunt tincidunt. Cras id diam egestas orci hendrerit sagittis. Fusce ultrices consequat quam, at malesuada leo viverra vel. Ut pharetra id lectus nec consequat. Morbi sed eleifend dui. Etiam faucibus molestie turpis, nec facilisis leo maximus eu. Donec maximus ac risus ut dictum. Suspendisse sed dapibus felis, non laoreet nunc.

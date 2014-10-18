@@ -4,14 +4,21 @@ class AnotationsController < ApplicationController
 	before_action :authenticate_user!
 
 	def create
+		puts params
 		@anotation = @chapter.anotations.create(anotation_params)
-		redirect_to book_chapter_path(@book, @chapter)
+		respond_to do |format|
+        format.html { redirect_to book_chapter_path(@book, @chapter), notice: 'Anotation was successfully created.' }
+        format.js
+    end
 	end
 
 	def destroy
 		@anotation = @chapter.anotations.find(params[:id])
 		@anotation.destroy
-		redirect_to book_chapter_path(@book, @chapter)
+		respond_to do |format|
+			format.html { redirect_to book_chapter_path(@book, @chapter) }
+			format.json { head :no_content }
+		end
 	end
 
 	private
