@@ -16,10 +16,8 @@
 		</div>
 		
 		<% if current_user %>
-			<% if @anotations.any? %>
 				<h3>Your annotations for this chapter</h3>
 				<%= render 'anotations/show_user_anotations' %>
-			<% end %>
 			<h3>Add anotation</h3>
 			<%= render 'anotations/new_anotation' %>
 		<% else %>
