@@ -5,10 +5,10 @@
 	    	<div class='row'>
 	    		<div class='col-md-9'>
 			    	<h4 class="list-group-item-heading"><%= book.name %></h4>
-			    	<h5 class="list-group-item-heading"><%= book.user.username %></h5>
+			    	<h5 class="list-group-item-heading"><%= book.user_username %></h5>
 			    </div>
 			    <div class='col-md-3'>		    	
-			    	<p class="list-group-item-heading"><b>Category: </b><%= book.category.name %></p>
+			    	<p class="list-group-item-heading"><b>Category: </b><%= book.category_name %></p>
 			    </div>
 			</div>
 			<p class="list-group-item-text"><%= truncate(strip_tags(book.description), length: 340) %></p><br />

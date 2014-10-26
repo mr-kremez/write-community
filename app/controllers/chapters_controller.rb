@@ -68,19 +68,6 @@ class ChaptersController < ApplicationController
       params.require(:chapter).permit(:name, :content)
     end
 
-    def set_prev_next_chapters(first_chapter_id, last_chapter_id)
-      if @chapter_id < @last_chapter_id_of_the_book
-        next_chapter = @chapter_id + 1
-      else
-        next_chapter = @chapter_id
-      end
-      if @chapter_id > @first_chapter_id_of_the_book
-        prev_chapter = @chapter_id - 1
-      else
-        prev_chapter = @chapter_id
-      end
-    end
-
     def check_chapter_belongs_to_user
       redirect_to book_chapter_path(@book, @chapter), alert: "You can not edit someone else's book " if @book.user_id != current_user.id
     end

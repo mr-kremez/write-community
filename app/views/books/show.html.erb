@@ -13,11 +13,11 @@
     </dd>
   <% end %>
   <dt><strong> Author:</strong></dt>
-  <dd><%= @book.user.username %></dd>
+  <dd><%= @book.user_username %></dd>
   <dt><strong> Rating of the book:</strong></dt>
   <dd><%= rating_for @book, "rating", :disable_after_rate => true %></dd>
   <dt><strong>Category:</strong></dt>
-  <dd><%= @book.category.name %></dd>
+  <dd><%= @book.category_name %></dd>
   <dt><strong>Description:</strong></dt>
   <dd><%= @book.description %></dd>
   <dt><strong>Tags:</strong></dt>
