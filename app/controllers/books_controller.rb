@@ -6,15 +6,16 @@ class BooksController < ApplicationController
   before_action :check_book_belongs_to_user, only: [:edit, :create, :destroy, :update]
 
   def index
+    books = Book.includes([:user, :category])
     if params[:category_id]
       @category_id = params[:category_id].to_i
-      @books = Book.where(category_id: params[:category_id]).page(params[:page]).per(params[:per])
+      @books = books.where(category_id: params[:category_id]).page(params[:page]).per(params[:per])
     elsif params[:tag]
-      @books = Book.tagged_with(params[:tag]).page(params[:page]).per(params[:per])
+      @books = books.tagged_with(params[:tag]).page(params[:page]).per(params[:per])
     elsif params[:search]
-      @books = Book.where("name like ? or description like ?","%#{params[:search]}%", "%#{params[:search]}%").page(params[:page]).per(params[:per])
+      @books = books.where("name like ? or description like ?","%#{params[:search]}%", "%#{params[:search]}%").page(params[:page]).per(params[:per])
     else
-      @books = Book.page(params[:page]).per(params[:per])
+      @books = books.page(params[:page]).per(params[:per])
     end
     respond_with(@books)
   end

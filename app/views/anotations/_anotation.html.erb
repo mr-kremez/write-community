@@ -1,0 +1,10 @@
+<div class='well'> 
+  <div class='row'>
+    <div class='col-md-11'>
+      <p><%= anotation.body %></p>
+    </div>
+    <div class='col-md-1'>
+      <%= link_to 'x', [@chapter.book, anotation.chapter, anotation], method: :delete, :class => 'btn btn-danger btn-xs delete-anotation' %>
+    </div>
+  </div>
+</div>

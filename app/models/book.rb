@@ -6,5 +6,8 @@ class Book < ActiveRecord::Base
 	has_many :chapters, dependent: :destroy
 	acts_as_taggable
 
+
+  delegate :name, :to => :category, :prefix => true
+  delegate :username, :to => :user, :prefix => true
 	paginates_per 5
 end

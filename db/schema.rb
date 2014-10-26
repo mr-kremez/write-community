@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141012171707) do
+ActiveRecord::Schema.define(version: 20141026135604) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "anotations", force: true do |t|
     t.text     "body"
@@ -21,8 +24,8 @@ ActiveRecord::Schema.define(version: 20141012171707) do
     t.datetime "updated_at"
   end
 
-  add_index "anotations", ["chapter_id"], name: "index_anotations_on_chapter_id"
-  add_index "anotations", ["user_id"], name: "index_anotations_on_user_id"
+  add_index "anotations", ["chapter_id"], name: "index_anotations_on_chapter_id", using: :btree
+  add_index "anotations", ["user_id"], name: "index_anotations_on_user_id", using: :btree
 
   create_table "average_caches", force: true do |t|
     t.integer  "rater_id"
@@ -33,6 +36,9 @@ ActiveRecord::Schema.define(version: 20141012171707) do
     t.datetime "updated_at"
   end
 
+  add_index "average_caches", ["rateable_id", "rateable_type"], name: "index_average_caches_on_rateable_id_and_rateable_type", using: :btree
+  add_index "average_caches", ["rater_id"], name: "index_average_caches_on_rater_id", using: :btree
+
   create_table "books", force: true do |t|
     t.string   "name"
     t.text     "description"
@@ -42,8 +48,8 @@ ActiveRecord::Schema.define(version: 20141012171707) do
     t.integer  "category_id"
   end
 
-  add_index "books", ["category_id"], name: "index_books_on_category_id"
-  add_index "books", ["user_id"], name: "index_books_on_user_id"
+  add_index "books", ["category_id"], name: "index_books_on_category_id", using: :btree
+  add_index "books", ["user_id"], name: "index_books_on_user_id", using: :btree
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -59,7 +65,7 @@ ActiveRecord::Schema.define(version: 20141012171707) do
     t.datetime "updated_at"
   end
 
-  add_index "chapters", ["book_id"], name: "index_chapters_on_book_id"
+  add_index "chapters", ["book_id"], name: "index_chapters_on_book_id", using: :btree
 
   create_table "overall_averages", force: true do |t|
     t.integer  "rateable_id"
@@ -68,6 +74,8 @@ ActiveRecord::Schema.define(version: 20141012171707) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "overall_averages", ["rateable_id", "rateable_type"], name: "index_overall_averages_on_rateable_id_and_rateable_type", using: :btree
 
   create_table "rates", force: true do |t|
     t.integer  "rater_id"
@@ -79,8 +87,8 @@ ActiveRecord::Schema.define(version: 20141012171707) do
     t.datetime "updated_at"
   end
 
-  add_index "rates", ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type"
-  add_index "rates", ["rater_id"], name: "index_rates_on_rater_id"
+  add_index "rates", ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type", using: :btree
+  add_index "rates", ["rater_id"], name: "index_rates_on_rater_id", using: :btree
 
   create_table "rating_caches", force: true do |t|
     t.integer  "cacheable_id"
@@ -92,7 +100,7 @@ ActiveRecord::Schema.define(version: 20141012171707) do
     t.datetime "updated_at"
   end
 
-  add_index "rating_caches", ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type"
+  add_index "rating_caches", ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"
@@ -102,8 +110,8 @@ ActiveRecord::Schema.define(version: 20141012171707) do
     t.datetime "updated_at"
   end
 
-  add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
-  add_index "roles", ["name"], name: "index_roles_on_name"
+  add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
+  add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
@@ -115,15 +123,15 @@ ActiveRecord::Schema.define(version: 20141012171707) do
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
   create_table "tags", force: true do |t|
     t.string  "name"
     t.integer "taggings_count", default: 0
   end
 
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
@@ -143,15 +151,15 @@ ActiveRecord::Schema.define(version: 20141012171707) do
     t.boolean  "blocked",                default: false, null: false
   end
 
-  add_index "users", ["blocked"], name: "index_users_on_blocked"
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["blocked"], name: "index_users_on_blocked", using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "users_roles", id: false, force: true do |t|
     t.integer "user_id"
     t.integer "role_id"
   end
 
-  add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+  add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
 
 end
