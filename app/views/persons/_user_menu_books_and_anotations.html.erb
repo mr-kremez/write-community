@@ -1,0 +1,20 @@
+<div class="margin_top">
+  <ul class="nav nav-tabs" role="tablist">
+  	<li class="active"><a href="/persons/profile#books" role="tab" data-toggle="tab">Books</a></li>
+  	<li><a href="/persons/profile#anotations" role="tab" data-toggle="tab">Anotations</a></li>
+  </ul>
+
+  <div class="tab-content">
+    	<div class="tab-pane fade in active" id="books">
+    		<%= paginate @books %>
+  		<%= render 'books/books_for_index' %>
+    	</div>
+    	<div class="tab-pane" id="anotations">
+    		<% if current_user.anotations.any? %>
+    			<%= render 'anotations/show_user_anotation_to_profile' %>
+    		<% else %>
+    			<p> You have not any anotations </p>
+    		<% end %>
+    	</div>
+  </div>
+</div>

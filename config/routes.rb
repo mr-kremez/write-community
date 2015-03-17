@@ -1,14 +1,31 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  post '/rate' => 'rater#create', :as => 'rate'
+  get 'home/contact'
+
+  post 'markdown/preview'
+
+  get 'chapters/show'
+
   get 'persons/profile'
 
+  get 'tags/:tag', to: 'books#show', as: :tag
+
+  resources :books do
+    resources :chapters do
+      resources :anotations
+    end
+  end
+
+
   devise_for :users
-  get 'persons/profile', as: 'user_root'
+  get 'persons/profile', as: 'user_root' 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'persons#profile'
+  root 'books#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,0 +1,12 @@
+// Place all the styles related to the books controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#tag_cloud {
+  width: 200px;
+  line-height: 1.2em;
+  .s { font-size: 0.7em; }
+  .m { font-size: 1.1em; }
+  .l { font-size: 1.7em; }
+}
+

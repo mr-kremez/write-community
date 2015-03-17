@@ -1,0 +1,27 @@
+<div class="page-header">
+  	<h1><%= @book.name %></h1>
+</div>
+
+<div class='row'>
+	<div class="col-md-3">
+		<div class="well well-sm">
+			<%= render 'list_of_chapters' %>
+			<%= render 'tools_for_this_user' %>
+		</div>
+	</div>
+	<div class="col-md-8">
+		<div class='well well-sm'>
+			<%= render 'display_chapter' %>
+			<%= render 'pager_for_chapters' %>
+		</div>
+		
+		<% if current_user %>
+				<h3>Your annotations for this chapter</h3>
+				<%= render 'anotations/show_user_anotations' %>
+			<h3>Add anotation</h3>
+			<%= render 'anotations/new_anotation' %>
+		<% else %>
+			<%= link_to 'Log in for be able leave anotations', new_user_registration_path, :class => 'btn btn-link' %>
+		<% end %>		
+	</div>
+</div>

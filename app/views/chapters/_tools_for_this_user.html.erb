@@ -1,0 +1,7 @@
+<% if current_user == @book.user %>
+	<div class="btn-group">
+		<%= link_to 'Add chapter', new_book_chapter_path, :class => 'btn btn-default btn-sm' %>
+		<%= link_to 'Edit chapter', edit_book_chapter_path(@book, @chapter), :class => 'btn btn-default btn-sm' %>
+	</div>
+		<%= link_to 'Delete this chapter', book_chapter_path(@book, @chapter), method: :delete, :class => 'btn btn-danger btn-xs', data: {confirm: 'Are you sure?'} %>
+<% end %>

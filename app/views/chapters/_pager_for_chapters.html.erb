@@ -1,0 +1,4 @@
+<ul class="pager">
+  	<li class="previous <%= 'disabled' if @chapter_id == @first_chapter_id_of_the_book %>"><%= link_to "Previous chapter", book_chapter_path(@book, @prev_chapter) %></li>
+  	<li class="next <%= 'disabled' if @chapter_id == @last_chapter_id_of_the_book %>"><%= link_to "Next chapter", book_chapter_path(@book, @next_chapter) %></li>
+</ul>

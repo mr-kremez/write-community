@@ -13,5 +13,28 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require turbolinks
+//= require markitup
+//= require jqcloud
+//= require tagcanvas.min
 //= require_tree .
+$(document).ready(function() {
+	var oopts = {
+	  	textFont: 'Impact,Arial Black,sans-serif',
+	  	textColour: 'blue',
+		textHeight: 20,
+		maxSpeed: 0.1,
+		decel: 0.9,
+		depth: 0.99,
+		outlineColour: 'blue',
+		outlineThickness: 3,
+		pulsateTo: 0.2,
+		pulsateTime: 0.5,
+		wheelZoom: false
+	};
+	if(!$('#myCanvas').tagcanvas(oopts,'tags')) {
+	  // something went wrong, hide the canvas container
+	  $('#myCanvasContainer').hide();
+	}
+
+});
+

@@ -39,5 +39,22 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'devise'
-gem 'simple_form'
-gem 'twitter-bootstrap-rails'
+
+gem "twitter-bootstrap-rails"
+
+gem 'kaminari'
+
+gem "redcarpet"
+
+gem 'markitup-rails'
+
+gem 'acts-as-taggable-on'
+
+gem 'jqcloud-rails'
+
+gem 'ratyrate'
+
+gem 'rails_admin'
+
+gem 'cancancan', '~> 1.9'
+gem "rolify"

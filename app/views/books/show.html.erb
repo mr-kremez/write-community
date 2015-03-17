@@ -1,0 +1,61 @@
+<div class="page-header">
+  <h1><%= @book.name.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <% if current_user == @book.user %> 
+    <dt><strong> Edit book information:</strong></dt>
+    <dd>
+      <div class="btn-group">
+        <%= link_to 'Edit', edit_book_path(@book), :class => 'btn btn-default btn-xs' %>
+        <%= link_to 'Delete this book', book_path(@book), method: :delete, :class => 'btn btn-danger btn-xs', data: {confirm: 'Are you sure?'} %>
+      </div>
+    </dd>
+  <% end %>
+  <dt><strong> Author:</strong></dt>
+  <dd><%= @book.user.username %></dd>
+  <dt><strong> Rating of the book:</strong></dt>
+  <dd><%= rating_for @book, "rating", :disable_after_rate => true %></dd>
+  <dt><strong>Category:</strong></dt>
+  <dd><%= @book.category.name %></dd>
+  <dt><strong>Description:</strong></dt>
+  <dd><%= @book.description %></dd>
+  <dt><strong>Tags:</strong></dt>
+  <dd>
+    <% if @book.tag_list.any? %>
+      <%= raw @book.tag_list.map { |t| link_to t, books_path(:tag => t) }.join(', ') %>
+    <% else %>
+      <p>This book hasn't any tags. </p>
+    <% end %>
+  </dd>
+  <% if current_user == @book.user %>
+    <% if @book.chapters.empty? %>
+      <dt><strong>Add your first chapter:</strong></dt>
+      <dd><%= link_to 'Add chapter', new_book_chapter_path(@book), :class => 'btn btn-default btn-xs' %><dd>
+    <% else %>
+      <dt class='margin_bottom'><strong>Add chapter:</strong></dt>
+      <dd><%= link_to 'Add chapter', new_book_chapter_path(@book), :class => 'btn btn-default btn-xs' %><dd>      
+    <% end %>    
+  <% end %>
+  <% if @book.chapters.any? %>
+    <dt><strong>Chapters:</strong></dt>
+    <dd><%= render 'chapters/list_of_chapters' %></dd>
+  <% else %>
+    <dt><strong>Chapters:</strong></dt>
+    <dd>This book hasn't any chapters.</dd>
+  <% end %>
+</dl>
+
+<div class="row">
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-8">
+    <%= link_to t('.back', :default => t("helpers.links.back")),
+                    books_path, :class => 'btn btn-default'  %>
+  </div>
+  <% if @book.chapters.any? %>
+    <div class="col-md-2">   
+        <%= link_to 'Read book', book_chapter_path(@book, @chapter), :class => 'btn btn-default' %> 
+    </div>
+  <% end %>
+</div>
