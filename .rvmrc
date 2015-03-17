@@ -1,1 +1,1 @@
-rvm use 2.1.2@train_project
+rvm use 2.2.0@global
